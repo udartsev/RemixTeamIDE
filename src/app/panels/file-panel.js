@@ -1,3 +1,5 @@
+import {TEAMNAME} from '../../../SETTINGS.js'
+
 /* global FileReader */
 var async = require('async')
 var $ = require('jquery')
@@ -76,7 +78,7 @@ function filepanel (localRegistry) {
   function remixdDialog () {
     return yo`
       <div class=${css.dialog}>
-        This will connect your local folder to Magnat remix IDE
+        This will connect to ${TEAMNAME} ./contract folder
       </div>
     `
   }
