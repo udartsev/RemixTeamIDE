@@ -43,6 +43,23 @@ Edit [RemixTeamIDE](https://github.com/udartsev/RemixTeamIDE.git) setting file:
 vim settings.js
 ```
 
+Edit **package.json**, **change** localhost address to your server host ip:
+```
+"scripts": { 
+  ...
+    "remixd": "./remixd/bin/remixd -s ./contracts --remix-ide http://127.0.0.1:8080",
+  ...
+}
+```
+**to:**
+```
+"scripts": { 
+  ...
+    "remixd": "./remixd/bin/remixd -s ./contracts --remix-ide http://[SERVER_IP]:8080",
+  ...
+}
+```
+
 ***
 
 ### SETTINGS.js example
