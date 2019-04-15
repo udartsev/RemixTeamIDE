@@ -83,6 +83,11 @@ export let TEAMNAME = 'SUPERTEAM';
 
 ### DEVELOPING:
 
+Copy your Solidity contracts files to ./contracts folder: 
+```
+cp -fR ./[your contracts] RemixTeamIDE/contracts
+``` 
+
 Run from **sudo**: 
 ```
 sudo npm start
