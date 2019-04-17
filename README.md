@@ -79,6 +79,8 @@ export let TEAMNAME = 'SUPERTEAM';
 5. **COMPILER_VER** = solc version like: `soljson-v0.5.7+commit.6da8b019`
 6. **TEAMNAME** = just your development team name
 
+**@note** **Don`t use server 8545 for incoming queries!** Because of [Internet Wide Ethereum JSON-RPC Attack on port 8545](https://github.com/trufflesuite/ganache-cli/issues/512)
+
 ***
 
 ### DEVELOPING:
