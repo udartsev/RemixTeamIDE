@@ -7,7 +7,7 @@ function MemoryPanel () {
     json: true,
     css: {
       'font-family': 'monospace'
-    }})
+    } })
 }
 
 MemoryPanel.prototype.update = function (calldata) {

@@ -49,7 +49,7 @@ class Terminal {
         'script'
       ],
       defaults: ['only remix transactions', 'script'],
-      dependencies: {'all transactions': ['only remix transactions'], 'only remix transactions': ['all transactions']}
+      dependencies: { 'all transactions': ['only remix transactions'], 'only remix transactions': ['all transactions'] }
     })
     self._components.dropdown.event.register('deselect', function (label) {
       self.event.trigger('filterChanged', ['deselect', label])

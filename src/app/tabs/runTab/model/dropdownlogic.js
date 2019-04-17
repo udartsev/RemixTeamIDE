@@ -176,12 +176,12 @@ class DropdownLogic {
               var gasPrice = executionContext.web3().toWei(content.querySelector('#gasprice').value, 'gwei')
               continueTxExecution(gasPrice)
             }
-          }}, {
-            label: 'Cancel',
-            fn: () => {
-              return cancelCb('Transaction canceled by user.')
-            }
-          })
+          } }, {
+          label: 'Cancel',
+          fn: () => {
+            return cancelCb('Transaction canceled by user.')
+          }
+        })
     }
 
     this.udapp.createContract(data, confirmationCb, continueCb, promptCb,
@@ -252,12 +252,12 @@ class DropdownLogic {
               var gasPrice = this.toWei(content.querySelector('#gasprice').value, 'gwei')
               continueTxExecution(gasPrice)
             }
-          }}, {
-            label: 'Cancel',
-            fn: () => {
-              return cancelCb('Transaction canceled by user.')
-            }
+          } }, {
+          label: 'Cancel',
+          fn: () => {
+            return cancelCb('Transaction canceled by user.')
           }
+        }
       )
     }
 
@@ -289,7 +289,6 @@ class DropdownLogic {
       })
     })
   }
-
 }
 
 module.exports = DropdownLogic

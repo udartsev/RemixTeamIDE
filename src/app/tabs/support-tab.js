@@ -2,7 +2,6 @@ const yo = require('yo-yo')
 var css = require('./styles/support-tab-styles')
 
 class SupportTab {
-
   constructor (localRegistry) {
     this.el = null
     this.gitterIframe = ''
@@ -71,7 +70,6 @@ class SupportTab {
 
     return this.el
   }
-
 }
 
 module.exports = SupportTab

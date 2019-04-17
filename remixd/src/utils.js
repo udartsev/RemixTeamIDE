@@ -1,6 +1,6 @@
+var isBinaryFile = require('isbinaryfile')
 var fs = require('fs-extra')
 var path = require('path')
-var isbinaryfile = require('isbinaryfile')
 var pathModule = require('path')
 
 module.exports = {
@@ -54,7 +54,7 @@ function walkSync (dir, filelist, sharedFolder) {
         filelist = walkSync(subElement, filelist, sharedFolder)
       } else {
         var relative = relativePath(subElement, sharedFolder)
-        filelist[relative] = isbinaryfile.sync(subElement)
+        filelist[relative] = isBinaryFile.sync(subElement)
       }
     }
   })

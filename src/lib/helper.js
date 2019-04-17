@@ -74,4 +74,3 @@ function find (args, query) {
   })
   return isMatch
 }
-

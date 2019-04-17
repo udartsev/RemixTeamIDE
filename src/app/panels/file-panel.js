@@ -1,4 +1,4 @@
-import {TEAMNAME} from '../../../SETTINGS.js'
+import { TEAMNAME } from '../../../SETTINGS.js'
 
 /* global FileReader */
 var async = require('async')
@@ -299,7 +299,7 @@ function filepanel (localRegistry) {
                 fileSystemExplorer.ensureRoot()
               }
             })
-          }})
+          } })
     }
   }
 

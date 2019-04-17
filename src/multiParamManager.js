@@ -7,7 +7,6 @@ var remixLib = require('remix-lib')
 var txFormat = remixLib.execution.txFormat
 
 class MultiParamManager {
-
   /**
     *
     * @param {bool} lookupOnly
@@ -100,8 +99,8 @@ class MultiParamManager {
     if (this.funABI.inputs) {
       return yo`<div>
         ${this.funABI.inputs.map(function (inp) {
-          return yo`<div class="${css.multiArg}"><label for="${inp.name}"> ${inp.name}: </label><input placeholder="${inp.type}" title="${inp.name}"></div>`
-        })}
+    return yo`<div class="${css.multiArg}"><label for="${inp.name}"> ${inp.name}: </label><input placeholder="${inp.type}" title="${inp.name}"></div>`
+  })}
       </div>`
     }
   }
@@ -151,21 +150,21 @@ class MultiParamManager {
         <div class="${css.group} ${css.multiArg}" >
           ${button}
           ${copyToClipboard(
-            () => {
-              var multiString = this.getMultiValsString()
-              var multiJSON = JSON.parse('[' + multiString + ']')
-              var encodeObj
-              if (this.evmBC) {
-                encodeObj = txFormat.encodeData(this.funABI, multiJSON, this.evmBC)
-              } else {
-                encodeObj = txFormat.encodeData(this.funABI, multiJSON)
-              }
-              if (encodeObj.error) {
-                throw new Error(encodeObj.error)
-              } else {
-                return encodeObj.data
-              }
-            }, 'Encode values of input fields & copy to clipboard', 'fa-briefcase')}
+    () => {
+      var multiString = this.getMultiValsString()
+      var multiJSON = JSON.parse('[' + multiString + ']')
+      var encodeObj
+      if (this.evmBC) {
+        encodeObj = txFormat.encodeData(this.funABI, multiJSON, this.evmBC)
+      } else {
+        encodeObj = txFormat.encodeData(this.funABI, multiJSON)
+      }
+      if (encodeObj.error) {
+        throw new Error(encodeObj.error)
+      } else {
+        return encodeObj.data
+      }
+    }, 'Encode values of input fields & copy to clipboard', 'fa-briefcase')}
         </div>
       </div>
     </div>`

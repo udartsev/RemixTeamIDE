@@ -124,7 +124,7 @@ class CmdInterpreterAPI {
             })
           })
           breakPoint.event.register('NoBreakpointHit', () => { self.log('line ' + row + ' is not part of the current execution') })
-          breakPoint.add({fileName: self._deps.editor.current(), row: row - 1})
+          breakPoint.add({ fileName: self._deps.editor.current(), row: row - 1 })
           breakPoint.jumpNextBreakpoint(0, true)
         }
       }
@@ -132,7 +132,7 @@ class CmdInterpreterAPI {
   }
   loadgist (id, cb) {
     const self = this
-    self._deps.app.loadFromGist({gist: id})
+    self._deps.app.loadFromGist({ gist: id })
     if (cb) cb()
   }
   loadurl (url, cb) {

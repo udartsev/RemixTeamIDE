@@ -22,7 +22,7 @@ function extractData (item, parent, key) {
   }
   if (item.type.lastIndexOf(']') === item.type.length - 1) {
     ret.children = (item.value || []).map(function (item, index) {
-      return {key: index, value: item}
+      return { key: index, value: item }
     })
     ret.children.unshift({
       key: 'length',
@@ -36,13 +36,13 @@ function extractData (item, parent, key) {
     ret.self = parent.isArray ? '' : item.type
   } else if (item.type.indexOf('struct') === 0) {
     ret.children = Object.keys((item.value || {})).map(function (key) {
-      return {key: key, value: item.value[key]}
+      return { key: key, value: item.value[key] }
     })
     ret.self = item.type
     ret.isStruct = true
   } else if (item.type.indexOf('mapping') === 0) {
     ret.children = Object.keys((item.value || {})).map(function (key) {
-      return {key: key, value: item.value[key]}
+      return { key: key, value: item.value[key] }
     })
     ret.isMapping = true
     ret.self = item.type
@@ -68,4 +68,3 @@ function fontColor (data) {
   }
   return 'color:' + color
 }
-

@@ -20,7 +20,7 @@ function CodeListView () {
   this.address
   this.codeView
   this.itemSelected
-  this.basicPanel = new DropdownPanel('Instructions', {json: false, displayContentOnly: true})
+  this.basicPanel = new DropdownPanel('Instructions', { json: false, displayContentOnly: true })
   this.basicPanel.event.register('hide', () => {
     this.event.trigger('hide', [])
   })
@@ -30,7 +30,7 @@ function CodeListView () {
 }
 
 CodeListView.prototype.render = function () {
-  return yo`<div id='asmcodes' >${this.basicPanel.render({height: style.instructionsList.height})}</div>`
+  return yo`<div id='asmcodes' >${this.basicPanel.render({ height: style.instructionsList.height })}</div>`
 }
 
 CodeListView.prototype.indexChanged = function (index) {

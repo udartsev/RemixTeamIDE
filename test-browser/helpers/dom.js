@@ -21,4 +21,3 @@ function listSelectorContains (textsToFind, selector, browser, callback) {
     callback()
   })
 }
-

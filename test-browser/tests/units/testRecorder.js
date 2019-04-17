@@ -7,7 +7,7 @@ module.exports = {
     return sources
   },
   test: function (browser, callback) {
-    contractHelper.addFile(browser, 'scenario.json', {content: records}, () => {
+    contractHelper.addFile(browser, 'scenario.json', { content: records }, () => {
       browser
         .click('.runView')
         .click('div[class^="cardContainer"] i[class^="arrow"]')
@@ -39,21 +39,21 @@ module.exports = {
         .waitForElementPresent('.instance:nth-of-type(2)')
         .click('.instance:nth-of-type(2)')
         .perform((client, done) => {
-          browser.clickFunction('set - transact (not payable)', {types: 'uint256 _p', values: '34'})
-              .click('i.savetransaction').modalFooterOKClick().getEditorValue(function (result) {
-                var parsed = JSON.parse(result)
-                browser.assert.equal(JSON.stringify(parsed.transactions[0].record.parameters), JSON.stringify(scenario.transactions[0].record.parameters))
-                browser.assert.equal(JSON.stringify(parsed.transactions[0].record.name), JSON.stringify(scenario.transactions[0].record.name))
-                browser.assert.equal(JSON.stringify(parsed.transactions[0].record.type), JSON.stringify(scenario.transactions[0].record.type))
-                browser.assert.equal(JSON.stringify(parsed.transactions[0].record.from), JSON.stringify(scenario.transactions[0].record.from))
-                browser.assert.equal(JSON.stringify(parsed.transactions[0].record.contractName), JSON.stringify(scenario.transactions[0].record.contractName))
+          browser.clickFunction('set - transact (not payable)', { types: 'uint256 _p', values: '34' })
+            .click('i.savetransaction').modalFooterOKClick().getEditorValue(function (result) {
+              var parsed = JSON.parse(result)
+              browser.assert.equal(JSON.stringify(parsed.transactions[0].record.parameters), JSON.stringify(scenario.transactions[0].record.parameters))
+              browser.assert.equal(JSON.stringify(parsed.transactions[0].record.name), JSON.stringify(scenario.transactions[0].record.name))
+              browser.assert.equal(JSON.stringify(parsed.transactions[0].record.type), JSON.stringify(scenario.transactions[0].record.type))
+              browser.assert.equal(JSON.stringify(parsed.transactions[0].record.from), JSON.stringify(scenario.transactions[0].record.from))
+              browser.assert.equal(JSON.stringify(parsed.transactions[0].record.contractName), JSON.stringify(scenario.transactions[0].record.contractName))
 
-                browser.assert.equal(JSON.stringify(parsed.transactions[1].record.parameters), JSON.stringify(scenario.transactions[1].record.parameters))
-                browser.assert.equal(JSON.stringify(parsed.transactions[1].record.name), JSON.stringify(scenario.transactions[1].record.name))
-                browser.assert.equal(JSON.stringify(parsed.transactions[1].record.type), JSON.stringify(scenario.transactions[1].record.type))
-                browser.assert.equal(JSON.stringify(parsed.transactions[1].record.from), JSON.stringify(scenario.transactions[1].record.from))
-                done()
-              })
+              browser.assert.equal(JSON.stringify(parsed.transactions[1].record.parameters), JSON.stringify(scenario.transactions[1].record.parameters))
+              browser.assert.equal(JSON.stringify(parsed.transactions[1].record.name), JSON.stringify(scenario.transactions[1].record.name))
+              browser.assert.equal(JSON.stringify(parsed.transactions[1].record.type), JSON.stringify(scenario.transactions[1].record.type))
+              browser.assert.equal(JSON.stringify(parsed.transactions[1].record.from), JSON.stringify(scenario.transactions[1].record.from))
+              done()
+            })
         }).perform(() => {
           callback()
         })
@@ -61,14 +61,14 @@ module.exports = {
   }
 }
 
-var sources = [{'browser/testRecorder.sol': {content: `contract testRecorder {
+var sources = [{ 'browser/testRecorder.sol': { content: `contract testRecorder {
   constructor(uint p) public {
       
   }
   function set (uint _p) public {
           
   }
-}`}}]
+}` } }]
 
 var records = `{
   "accounts": {

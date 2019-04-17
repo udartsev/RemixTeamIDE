@@ -357,12 +357,12 @@ class Recorder {
                 var gasPrice = executionContext.web3().toWei(content.querySelector('#gasprice').value, 'gwei')
                 continueTxExecution(gasPrice)
               }
-            }}, {
-              label: 'Cancel',
-              fn: () => {
-                return cancelCb('Transaction canceled by user.')
-              }
-            })
+            } }, {
+            label: 'Cancel',
+            fn: () => {
+              return cancelCb('Transaction canceled by user.')
+            }
+          })
       }
 
       this.run(txArray, accounts, options, abis, linkReferences, confirmationCb, continueCb, promptCb, alertCb, logCallBack, (abi, address, contractName) => {
@@ -385,7 +385,6 @@ class Recorder {
       })
     })
   }
-
 }
 
 module.exports = Recorder

@@ -49,19 +49,19 @@ class Dropdown {
         ${self._view.selected}
         <div class=${css.options} style="display: none;">
           ${self.data._options.map(label => {
-            var input = yo`<input data-idx=${self.data._elements.length} onchange=${emit} type="checkbox" />`
-            if (self.data.selected.indexOf(label) !== -1) {
-              input.checked = true
-              self.event.trigger('select', [label])
-            }
-            self.data._elements.push(input)
-            return yo`
+    var input = yo`<input data-idx=${self.data._elements.length} onchange=${emit} type="checkbox" />`
+    if (self.data.selected.indexOf(label) !== -1) {
+      input.checked = true
+      self.event.trigger('select', [label])
+    }
+    self.data._elements.push(input)
+    return yo`
               <div class=${css.option}>
                 ${input}
                 <label>${label}</label>
               </div>
             `
-          })}
+  })}
         </div>
       </div>
     `
@@ -91,7 +91,7 @@ class Dropdown {
           var label = self.data._dependencies[changed][dep]
           var el = self.data._elements[self.data._options.indexOf(label)]
           el.checked = !el.checked
-          emit({currentTarget: el, type: 'changeDependencies'})
+          emit({ currentTarget: el, type: 'changeDependencies' })
         }
       }
     }

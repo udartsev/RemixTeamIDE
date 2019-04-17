@@ -3,7 +3,7 @@ var DropdownPanel = require('./DropdownPanel')
 var yo = require('yo-yo')
 
 function StackPanel () {
-  this.basicPanel = new DropdownPanel('Stack', {json: true, displayContentOnly: false})
+  this.basicPanel = new DropdownPanel('Stack', { json: true, displayContentOnly: false })
 }
 
 StackPanel.prototype.update = function (calldata) {

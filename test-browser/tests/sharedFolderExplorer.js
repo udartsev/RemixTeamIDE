@@ -21,14 +21,14 @@ var gmbhTestContract = `contract gmbh {
 `
 var sources = [
   {
-    'localhost/folder1/contract2.sol': {content: 'contract test2 { function get () public returns (uint) { return 11; }}'}
+    'localhost/folder1/contract2.sol': { content: 'contract test2 { function get () public returns (uint) { return 11; }}' }
   },
   {
-    'localhost/src/gmbh/company.sol': {content: assetsTestContract}
+    'localhost/src/gmbh/company.sol': { content: assetsTestContract }
   },
   {
-    'localhost/src/gmbh/company.sol': {content: assetsTestContract},
-    'localhost/src/gmbh/contract.sol': {content: gmbhTestContract}
+    'localhost/src/gmbh/company.sol': { content: assetsTestContract },
+    'localhost/src/gmbh/contract.sol': { content: gmbhTestContract }
   }
 ]
 
@@ -114,10 +114,10 @@ function runTests (browser, testData) {
     .pause(1000)
     .perform(function (done) {
       contractHelper.renameFile(browser, 'localhost/folder1/contract_' + browserName + '.sol', 'renamed_contract_' + browserName + '.sol',
-      'localhost/folder1/renamed_contract_' + browserName + '.sol', () => {
-        console.log('tested file renaming')
-        done()
-      })
+        'localhost/folder1/renamed_contract_' + browserName + '.sol', () => {
+          console.log('tested file renaming')
+          done()
+        })
     })
     .pause(1000)
     .perform(function (done) { // remove a file and check

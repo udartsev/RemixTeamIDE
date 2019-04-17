@@ -25,67 +25,67 @@ window.onload = function () {
 
   document.querySelector('input#testmessageadd').addEventListener('click', function () {
     extension.call('config', 'setConfig', [document.getElementById('filename').value, document.getElementById('valuetosend').value],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   document.querySelector('input#testmessageremove').addEventListener('click', function () {
     extension.call('config', 'removeConfig', [document.getElementById('filename').value],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   document.querySelector('input#testmessagerget').addEventListener('click', function () {
     extension.call('config', 'getConfig', [document.getElementById('filename').value],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   document.querySelector('input#testcontractcreation').addEventListener('click', function () {
     extension.call('udapp', 'runTx', [addrResolverTx],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   document.querySelector('input#testaccountcreation').addEventListener('click', function () {
     extension.call('udapp', 'createVMAccount', ['71975fbf7fe448e004ac7ae54cad0a383c3906055a75468714156a07385e96ce', '0x56BC75E2D63100000'],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   var k = 0
   document.querySelector('input#testchangetitle').addEventListener('click', function () {
     extension.call('app', 'updateTitle', ['changed title ' + k++],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   document.querySelector('input#setcontentof').addEventListener('click', function () {
     extension.call('editor', 'setFile', [document.getElementById('filename').value, document.getElementById('valuetosend').value],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   document.querySelector('input#getcontentof').addEventListener('click', function () {
     extension.call('editor', 'getFile', [document.getElementById('filename').value],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   document.querySelector('input#getcurrent').addEventListener('click', function () {
     extension.call('editor', 'getCurrentFile', [],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   document.querySelector('input#sethighlight').addEventListener('click', function () {
     extension.call('editor', 'highlight', [document.getElementById('filename').value, document.getElementById('valuetosend').value, document.getElementById('valuetosend2').value],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   document.querySelector('input#getfilesfrompath').addEventListener('click', function () {
     extension.call('editor', 'getFilesFromPath', [document.getElementById('filename').value],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   document.querySelector('input#addnetwork').addEventListener('click', function () {
     extension.call('app', 'addProvider', [document.getElementById('filename').value, document.getElementById('valuetosend').value],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 
   document.querySelector('input#removenetwork').addEventListener('click', function () {
     extension.call('app', 'removeProvider', [document.getElementById('filename').value],
-    function (error, result) { console.log(error, result) })
+      function (error, result) { console.log(error, result) })
   })
 }

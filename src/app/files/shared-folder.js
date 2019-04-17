@@ -33,7 +33,7 @@ module.exports = class SharedFolder {
             this.event.trigger('fileRemoved', [this.type + '/' + data.value.path])
           })
         } else if (data.name === 'changed') {
-          this._remixd.call('sharedfolder', 'get', {path: data.value}, (error, content) => {
+          this._remixd.call('sharedfolder', 'get', { path: data.value }, (error, content) => {
             if (error) {
               console.log(error)
             } else {
@@ -80,14 +80,14 @@ module.exports = class SharedFolder {
 
   exists (path, cb) {
     var unprefixedpath = this.removePrefix(path)
-    this._remixd.call('sharedfolder', 'exists', {path: unprefixedpath}, (error, result) => {
+    this._remixd.call('sharedfolder', 'exists', { path: unprefixedpath }, (error, result) => {
       cb(error, result)
     })
   }
 
   get (path, cb) {
     var unprefixedpath = this.removePrefix(path)
-    this._remixd.call('sharedfolder', 'get', {path: unprefixedpath}, (error, file) => {
+    this._remixd.call('sharedfolder', 'get', { path: unprefixedpath }, (error, file) => {
       if (!error) {
         this.filesContent[path] = file.content
         if (file.readonly) { this._readOnlyFiles[path] = 1 }
@@ -102,7 +102,7 @@ module.exports = class SharedFolder {
 
   set (path, content, cb) {
     var unprefixedpath = this.removePrefix(path)
-    this._remixd.call('sharedfolder', 'set', {path: unprefixedpath, content: content}, (error, result) => {
+    this._remixd.call('sharedfolder', 'set', { path: unprefixedpath, content: content }, (error, result) => {
       if (cb) return cb(error, result)
       var path = this.type + '/' + unprefixedpath
       this.event.trigger('fileChanged', [path])
@@ -120,7 +120,7 @@ module.exports = class SharedFolder {
 
   remove (path) {
     var unprefixedpath = this.removePrefix(path)
-    this._remixd.call('sharedfolder', 'remove', {path: unprefixedpath}, (error, result) => {
+    this._remixd.call('sharedfolder', 'remove', { path: unprefixedpath }, (error, result) => {
       if (error) console.log(error)
       var path = this.type + '/' + unprefixedpath
       delete this.filesContent[path]
@@ -133,7 +133,7 @@ module.exports = class SharedFolder {
   rename (oldPath, newPath, isFolder) {
     var unprefixedoldPath = this.removePrefix(oldPath)
     var unprefixednewPath = this.removePrefix(newPath)
-    this._remixd.call('sharedfolder', 'rename', {oldPath: unprefixedoldPath, newPath: unprefixednewPath}, (error, result) => {
+    this._remixd.call('sharedfolder', 'rename', { oldPath: unprefixedoldPath, newPath: unprefixednewPath }, (error, result) => {
       if (error) {
         console.log(error)
         if (this.error[error.code]) error = this.error[error.code]

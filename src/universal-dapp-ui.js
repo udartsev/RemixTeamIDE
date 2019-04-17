@@ -25,7 +25,7 @@ function UniversalDAppUI (udapp, registry) {
   this.udapp = udapp
   this.registry = registry
 
-  this.compilerData = {contractsDetails: {}}
+  this.compilerData = { contractsDetails: {} }
   this._deps = {
     compilersartefacts: registry.get('compilersartefacts').api
   }
@@ -180,12 +180,12 @@ UniversalDAppUI.prototype.getCallButton = function (args) {
               var gasPrice = executionContext.web3().toWei(content.querySelector('#gasprice').value, 'gwei')
               continueTxExecution(gasPrice)
             }
-          }}, {
-            label: 'Cancel',
-            fn: () => {
-              return cancelCb('Transaction canceled by user.')
-            }
-          })
+          } }, {
+          label: 'Cancel',
+          fn: () => {
+            return cancelCb('Transaction canceled by user.')
+          }
+        })
     }
 
     var continueCb = (error, continueTxExecution, cancelCb) => {
@@ -195,16 +195,16 @@ UniversalDAppUI.prototype.getCallButton = function (args) {
         The transaction execution will likely fail. Do you want to force sending? <br>
         ${msg}
         </div>`,
-          {
-            label: 'Send Transaction',
-            fn: () => {
-              continueTxExecution()
-            }}, {
-              label: 'Cancel Transaction',
-              fn: () => {
-                cancelCb()
-              }
-            })
+        {
+          label: 'Send Transaction',
+          fn: () => {
+            continueTxExecution()
+          } }, {
+          label: 'Cancel Transaction',
+          fn: () => {
+            cancelCb()
+          }
+        })
       } else {
         continueTxExecution()
       }

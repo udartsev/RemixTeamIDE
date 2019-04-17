@@ -176,7 +176,7 @@ UniversalDApp.prototype.pendingTransactionsCount = function () {
   * @param {Function} callback    - callback.
   */
 UniversalDApp.prototype.createContract = function (data, confirmationCb, continueCb, promptCb, callback) {
-  this.runTx({data: data, useCall: false}, confirmationCb, continueCb, promptCb, (error, txResult) => {
+  this.runTx({ data: data, useCall: false }, confirmationCb, continueCb, promptCb, (error, txResult) => {
     // see universaldapp.js line 660 => 700 to check possible values of txResult (error case)
     callback(error, txResult)
   })
@@ -191,7 +191,7 @@ UniversalDApp.prototype.createContract = function (data, confirmationCb, continu
   * @param {Function} callback    - callback.
   */
 UniversalDApp.prototype.callFunction = function (to, data, funAbi, confirmationCb, continueCb, promptCb, callback) {
-  this.runTx({to: to, data: data, useCall: funAbi.constant}, confirmationCb, continueCb, promptCb, (error, txResult) => {
+  this.runTx({ to: to, data: data, useCall: funAbi.constant }, confirmationCb, continueCb, promptCb, (error, txResult) => {
     // see universaldapp.js line 660 => 700 to check possible values of txResult (error case)
     callback(error, txResult)
   })
@@ -226,11 +226,11 @@ UniversalDApp.prototype.getInputs = function (funABI) {
 UniversalDApp.prototype.silentRunTx = function (tx, cb) {
   if (!executionContext.isVM()) return cb('Cannot silently send transaction through a web3 provider')
   this.txRunner.rawRun(
-  tx,
-  (network, tx, gasEstimation, continueTxExecution, cancelCb) => { continueTxExecution() },
-  (error, continueTxExecution, cancelCb) => { if (error) { cb(error) } else { continueTxExecution() } },
-  (okCb, cancelCb) => { okCb() },
-  cb)
+    tx,
+    (network, tx, gasEstimation, continueTxExecution, cancelCb) => { continueTxExecution() },
+    (error, continueTxExecution, cancelCb) => { if (error) { cb(error) } else { continueTxExecution() } },
+    (okCb, cancelCb) => { okCb() },
+    cb)
 }
 
 UniversalDApp.prototype.runTx = function (args, confirmationCb, continueCb, promptCb, cb) {

@@ -5,7 +5,7 @@
   "devDependencies": {
     "ace-mode-solidity": "^0.1.0",
     "async": "^2.1.2",
-    "babel-eslint": "^7.1.1",
+    "babel-eslint": "^7.2.3",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-yo-yoify": "^0.3.3",
     "babel-polyfill": "^6.22.0",
@@ -59,16 +59,16 @@
     "yo-yo": "^1.2.2"
   },
   "dependencies": {
-    "http-server": "^0.11.1",
-    "yo-yoify": "^4.3.0",
-    "serve": "^11.0.0",
-    "tar": "^4.4.8",
-    "marked": "^0.6.2",
     "braces": "^3.0.1",
-    "websocket": "1.0.28",
     "fs-extra": "7.0.1",
+    "http-server": "^0.11.1",
+    "isbinaryfile": "^3.0.3",
+    "marked": "^0.6.2",
+    "serve": "^11.0.0",
     "stdout": "0.0.3",
-    "isbinaryfile": "4.0.0"
+    "tar": "^4.4.8",
+    "websocket": "1.0.28",
+    "yo-yoify": "^4.3.0"
   },
   "repository": {
     "type": "git",
@@ -165,7 +165,7 @@
     "browsertest": "sleep 5 && npm run nightwatch_local",
     "csslint": "csslint --ignore=order-alphabetical --errors='errors,duplicate-properties,empty-rules' --exclude-list='assets/css/font-awesome.min.css' assets/css/",
     "downloadsolc_root": "wget --no-check-certificate https://solc-bin.ethereum.org/bin/soljson-v0.5.6+commit.b259423e.js -O soljson.js",
-    "lint": "standard | notify-error",
+    "lint": "notify-error",
     "make-mock-compiler": "node ci/makeMockCompiler.js",
     "minify": "uglifyjs --in-source-map inline --source-map-inline -c warnings=false",
     "nightwatch_local": "nightwatch --config nightwatch.js --env local",

@@ -55,7 +55,7 @@ function loadTestWeb3 (data) {
 
   uiTestweb3.setProvider = function (provider) {}
 
-  uiTestweb3.currentProvider = {host: 'web3 modified for testing purposes :)'}
+  uiTestweb3.currentProvider = { host: 'web3 modified for testing purposes :)' }
   vmdebugger.addProvider('TEST', uiTestweb3)
   vmdebugger.switchProvider('TEST')
   container.debugger.updateWeb3Reference(uiTestweb3)
@@ -76,4 +76,3 @@ loadJSON('/test-browser-debugger/resources/testWeb3.json', function (result) {
   var data = JSON.parse(result)
   waitForRemix(data)
 })
-

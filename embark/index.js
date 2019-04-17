@@ -8,7 +8,7 @@ module.exports = (embark) => {
   })
 
   embark.registerServiceCheck('Remix IDE', (cb) => {
-    return cb({name: 'Remix IDE (localhost:8080)', status: 'on'})
+    return cb({ name: 'Remix IDE (localhost:8080)', status: 'on' })
   })
 
   server.listen(8080, '127.0.0.1', function () {})

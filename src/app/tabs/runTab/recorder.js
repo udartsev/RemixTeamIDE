@@ -9,7 +9,6 @@ var modalDialog = require('../../ui/modaldialog')
 var confirmDialog = require('../../execution/confirmDialog')
 
 class RecorderUI {
-
   constructor (recorder, logCallBack) {
     this.recorder = recorder
     this.logCallBack = logCallBack
@@ -40,16 +39,16 @@ class RecorderUI {
         The transaction execution will likely fail. Do you want to force sending? <br>
         ${msg}
         </div>`,
-          {
-            label: 'Send Transaction',
-            fn: () => {
-              continueTxExecution()
-            }}, {
-              label: 'Cancel Transaction',
-              fn: () => {
-                cancelCb()
-              }
-            })
+        {
+          label: 'Send Transaction',
+          fn: () => {
+            continueTxExecution()
+          } }, {
+          label: 'Cancel Transaction',
+          fn: () => {
+            cancelCb()
+          }
+        })
       } else {
         continueTxExecution()
       }
@@ -83,7 +82,6 @@ class RecorderUI {
       }
     )
   }
-
 }
 
 module.exports = RecorderUI

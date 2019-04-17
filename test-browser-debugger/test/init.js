@@ -93,7 +93,7 @@ function extendBrowser (browser) {
     'Shift': 16
   }
 
-/* browser.sendKeys is not working for safari */
+  /* browser.sendKeys is not working for safari */
 /* still not working properly
 browser.fireEvent = function (el, key, times, callback) {
   var data = {

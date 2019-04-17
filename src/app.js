@@ -117,16 +117,16 @@ class App {
     var self = this
     this.event = new EventManager()
     self._components = {}
-    registry.put({api: self, name: 'app'})
+    registry.put({ api: self, name: 'app' })
 
     var fileStorage = new Storage('sol:')
-    registry.put({api: fileStorage, name: 'fileStorage'})
+    registry.put({ api: fileStorage, name: 'fileStorage' })
 
     var configStorage = new Storage('config:')
-    registry.put({api: configStorage, name: 'configStorage'})
+    registry.put({ api: configStorage, name: 'configStorage' })
 
     self._components.config = new Config(fileStorage)
-    registry.put({api: self._components.config, name: 'config'})
+    registry.put({ api: self._components.config, name: 'config' })
 
     executionContext.init(self._components.config)
     executionContext.listenOnLastBlock()
@@ -137,11 +137,11 @@ class App {
     self._components.filesProviders['browser'] = new Browserfiles(fileStorage)
     self._components.filesProviders['config'] = new BrowserfilesTree('config', configStorage)
     self._components.filesProviders['config'].init()
-    registry.put({api: self._components.filesProviders['browser'], name: 'fileproviders/browser'})
-    registry.put({api: self._components.filesProviders['config'], name: 'fileproviders/config'})
+    registry.put({ api: self._components.filesProviders['browser'], name: 'fileproviders/browser' })
+    registry.put({ api: self._components.filesProviders['config'], name: 'fileproviders/config' })
 
     var remixd = new Remixd(65520)
-    registry.put({api: remixd, name: 'remixd'})
+    registry.put({ api: remixd, name: 'remixd' })
     remixd.event.register('system', (message) => {
       if (message.error) toolTip(message.error)
     })
@@ -153,12 +153,12 @@ class App {
     self._components.filesProviders['ipfs'] = new BasicReadOnlyExplorer('ipfs')
     self._components.filesProviders['https'] = new BasicReadOnlyExplorer('https')
     self._components.filesProviders['http'] = new BasicReadOnlyExplorer('http')
-    registry.put({api: self._components.filesProviders['localhost'], name: 'fileproviders/localhost'})
-    registry.put({api: self._components.filesProviders['swarm'], name: 'fileproviders/swarm'})
-    registry.put({api: self._components.filesProviders['github'], name: 'fileproviders/github'})
-    registry.put({api: self._components.filesProviders['gist'], name: 'fileproviders/gist'})
-    registry.put({api: self._components.filesProviders['ipfs'], name: 'fileproviders/ipfs'})
-    registry.put({api: self._components.filesProviders, name: 'fileproviders'})
+    registry.put({ api: self._components.filesProviders['localhost'], name: 'fileproviders/localhost' })
+    registry.put({ api: self._components.filesProviders['swarm'], name: 'fileproviders/swarm' })
+    registry.put({ api: self._components.filesProviders['github'], name: 'fileproviders/github' })
+    registry.put({ api: self._components.filesProviders['gist'], name: 'fileproviders/gist' })
+    registry.put({ api: self._components.filesProviders['ipfs'], name: 'fileproviders/ipfs' })
+    registry.put({ api: self._components.filesProviders, name: 'fileproviders' })
 
     self._view = {}
 
@@ -259,16 +259,16 @@ class App {
 
     async.each(Object.keys(filesSet), (file, callback) => {
       helper.createNonClashingName(file, self._components.filesProviders[fileProvider],
-      (error, name) => {
-        if (error) {
-          modalDialogCustom.alert('Unexpected error loading the file ' + error)
-        } else if (helper.checkSpecialChars(name)) {
-          modalDialogCustom.alert('Special characters are not allowed')
-        } else {
-          self._components.filesProviders[fileProvider].set(name, filesSet[file].content)
-        }
-        callback()
-      })
+        (error, name) => {
+          if (error) {
+            modalDialogCustom.alert('Unexpected error loading the file ' + error)
+          } else if (helper.checkSpecialChars(name)) {
+            modalDialogCustom.alert('Special characters are not allowed')
+          } else {
+            self._components.filesProviders[fileProvider].set(name, filesSet[file].content)
+          }
+          callback()
+        })
     }, (error) => {
       if (!error) self._components.fileManager.switchFile()
       if (callback) callback(error)
@@ -283,20 +283,20 @@ function run () {
 
   /* Remix IDE Welcome Alert */
 
-  registry.put({api: msg => self._components.editorpanel.logHtmlMessage(msg), name: 'logCallback'})
+  registry.put({ api: msg => self._components.editorpanel.logHtmlMessage(msg), name: 'logCallback' })
 
   // helper for converting offset to line/column
   var offsetToLineColumnConverter = new OffsetToLineColumnConverter()
-  registry.put({api: offsetToLineColumnConverter, name: 'offsettolinecolumnconverter'})
+  registry.put({ api: offsetToLineColumnConverter, name: 'offsettolinecolumnconverter' })
 
   // json structure for hosting the last compilattion result
   self._components.compilersArtefacts = {} // store all the possible compilation data (key represent a compiler name)
-  registry.put({api: self._components.compilersArtefacts, name: 'compilersartefacts'})
+  registry.put({ api: self._components.compilersArtefacts, name: 'compilersartefacts' })
 
   // ----------------- UniversalDApp -----------------
   var udapp = new UniversalDApp(registry)
   // TODO: to remove when possible
-  registry.put({api: udapp, name: 'udapp'})
+  registry.put({ api: udapp, name: 'udapp' })
   udapp.event.register('transactionBroadcasted', (txhash, networkName) => {
     var txLink = executionContext.txDetailsLink(networkName, txhash)
     if (txLink) registry.get('logCallback').api.logCallback(yo`<a href="${txLink}" target="_blank">${txLink}</a>`)
@@ -304,7 +304,7 @@ function run () {
 
   var udappUI = new UniversalDAppUI(udapp, registry)
   // TODO: to remove when possible
-  registry.put({api: udappUI, name: 'udappUI'})
+  registry.put({ api: udappUI, name: 'udappUI' })
 
   // ----------------- Tx listener -----------------
   var transactionReceiptResolver = new TransactionReceiptResolver()
@@ -321,8 +321,8 @@ function run () {
     },
     event: {
       udapp: udapp.event
-    }})
-  registry.put({api: txlistener, name: 'txlistener'})
+    } })
+  registry.put({ api: txlistener, name: 'txlistener' })
 
   var eventsDecoder = new EventsDecoder({
     api: {
@@ -331,7 +331,7 @@ function run () {
       }
     }
   })
-  registry.put({api: eventsDecoder, name: 'eventsdecoder'})
+  registry.put({ api: eventsDecoder, name: 'eventsdecoder' })
 
   txlistener.startListening()
 
@@ -344,7 +344,7 @@ function run () {
   // ----------------- file manager ----------------------------
   self._components.fileManager = new FileManager()
   var fileManager = self._components.fileManager
-  registry.put({api: fileManager, name: 'filemanager'})
+  registry.put({ api: fileManager, name: 'filemanager' })
 
   // ---------------- Plugin Manager -------------------------------
 
@@ -355,7 +355,7 @@ function run () {
     self._components.fileProviders,
     self._components.fileManager,
     udapp)
-  registry.put({api: pluginManager, name: 'pluginmanager'})
+  registry.put({ api: pluginManager, name: 'pluginmanager' })
 
   pluginManager.event.register('sendCompilationResult', (file, source, languageVersion, data) => {
     // TODO check whether the tab is configured
@@ -394,11 +394,11 @@ function run () {
   self._components.filePanel = new FilePanel()
   self._view.leftpanel.appendChild(self._components.filePanel.render())
   self._components.filePanel.event.register('resize', delta => self._adjustLayout('left', delta))
-  registry.put({api: self._components.filePanel, name: 'filepanel'})
+  registry.put({ api: self._components.filePanel, name: 'filepanel' })
 
   // ----------------- Renderer -----------------
   var renderer = new Renderer()
-  registry.put({api: renderer, name: 'renderer'})
+  registry.put({ api: renderer, name: 'renderer' })
 
   // ---------------- Tabs -------------------------------
   let compileTab = new CompileTab(self._components.registry)

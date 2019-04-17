@@ -193,7 +193,7 @@ class ContextualListener {
     } else {
       executionCost = '-'
     }
-    return {executionCost, codeDepositCost}
+    return { executionCost, codeDepositCost }
   }
 
   _loadContractInfos (node) {

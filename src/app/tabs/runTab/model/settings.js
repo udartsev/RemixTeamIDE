@@ -5,7 +5,6 @@ var EventManager = remixLib.EventManager
 var executionContext = remixLib.execution.executionContext
 
 class Settings {
-
   constructor (udapp) {
     this.udapp = udapp
     this.event = new EventManager()
@@ -54,7 +53,7 @@ class Settings {
         if (err) {
           return cb(err)
         }
-        cb(null, {id, name})
+        cb(null, { id, name })
       })
     })(this.networkcallid)
   }
@@ -111,7 +110,6 @@ class Settings {
       cb(e.message)
     }
   }
-
 }
 
 module.exports = Settings

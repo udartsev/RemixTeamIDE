@@ -1,4 +1,4 @@
-import {COMPILER_VER} from '../../../SETTINGS.js'
+import { COMPILER_VER } from '../../../SETTINGS.js'
 
 /* global Worker */
 const async = require('async')
@@ -67,7 +67,7 @@ module.exports = class CompileTab {
       timeout: 300,
       allversions: null,
       selectedVersion: null,
-      defaultVersion: COMPILER_VER + '.js', // this default version is defined: in makeMockCompiler (for browser test) and in package.json (downloadsolc_root) for the builtin compiler
+      defaultVersion: 'soljson-v0.5.1+commit.c8a2cb62.js', // this default version is defined: in makeMockCompiler (for browser test) and in package.json (downloadsolc_root) for the builtin compiler
       baseurl: 'https://solc-bin.ethereum.org/bin'
     }
     self.data.optimize = self._components.queryParams.get().optimize
@@ -147,7 +147,7 @@ module.exports = class CompileTab {
       var error = false
       if (data['error']) {
         error = true
-        self._deps.renderer.error(data['error'].formattedMessage, self._view.errorContainer, {type: data['error'].severity || 'error'})
+        self._deps.renderer.error(data['error'].formattedMessage, self._view.errorContainer, { type: data['error'].severity || 'error' })
         if (data['error'].mode === 'panic') {
           /*
           return modalDialogCustom.alert(yo`<div><i class="fa fa-exclamation-circle ${css.panicError}" aria-hidden="true"></i>
@@ -163,16 +163,16 @@ module.exports = class CompileTab {
         data.errors.forEach(function (err) {
           if (self._deps.config.get('hideWarnings')) {
             if (err.severity !== 'warning') {
-              self._deps.renderer.error(err.formattedMessage, self._view.errorContainer, {type: err.severity})
+              self._deps.renderer.error(err.formattedMessage, self._view.errorContainer, { type: err.severity })
             }
           } else {
-            self._deps.renderer.error(err.formattedMessage, self._view.errorContainer, {type: err.severity})
+            self._deps.renderer.error(err.formattedMessage, self._view.errorContainer, { type: err.severity })
           }
         })
       }
       if (!error && data.contracts) {
         self._components.compiler.visitContracts((contract) => {
-          self._deps.renderer.error(contract.name, self._view.errorContainer, {type: 'success'})
+          self._deps.renderer.error(contract.name, self._view.errorContainer, { type: 'success' })
         })
       }
     })
@@ -362,7 +362,7 @@ module.exports = class CompileTab {
               ret.children = item.map((item, index) => ({ key: index, value: item }))
               ret.self = ''
             } else if (item instanceof Object) {
-              ret.children = Object.keys(item).map((key) => ({key: key, value: item[key]}))
+              ret.children = Object.keys(item).map((key) => ({ key: key, value: item[key] }))
               ret.self = ''
             } else {
               ret.self = item
@@ -540,7 +540,7 @@ module.exports = class CompileTab {
         (cb) => { if (!splitted) { cb('URL not parseable: ' + url) } else { self.importFileCb('localhost/installed_contracts/' + splitted[1] + '/contracts/' + splitted[2], cb) } },
         (cb) => { self.importFileCb('localhost/node_modules/' + url, cb) },
         (cb) => { if (!splitted) { cb('URL not parseable: ' + url) } else { self.importFileCb('localhost/node_modules/' + splitted[1] + '/contracts/' + splitted[2], cb) } }],
-        (error, result) => { filecb(error, result) }
+      (error, result) => { filecb(error, result) }
       )
     } else {
       self.importExternal(url, filecb)

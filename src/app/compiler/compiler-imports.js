@@ -57,12 +57,12 @@ module.exports = class CompilerImports {
       {
         url
       },
-    (err, r, data) => {
-      if (err) {
-        return cb(err || 'Unknown transport error')
-      }
-      cb(null, data, cleanUrl)
-    })
+      (err, r, data) => {
+        if (err) {
+          return cb(err || 'Unknown transport error')
+        }
+        cb(null, data, cleanUrl)
+      })
   }
 
   handlers () {
@@ -114,7 +114,7 @@ module.exports = class CompilerImports {
     })
 
     if (found) {
-      return
+
     } else if (/^[^:]*:\/\//.exec(url)) {
       cb('Unable to import "' + url + '": Unsupported URL schema')
     } else {

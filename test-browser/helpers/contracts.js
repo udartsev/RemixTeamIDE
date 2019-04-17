@@ -45,16 +45,16 @@ function getCompiledContracts (browser, compiled, callback) {
 
 function selectContract (browser, contractName, callback) {
   browser.click('.runView')
-  .setValue('#runTabView select[class^="contractNames"]', contractName).perform(() => {
-    callback()
-  })
+    .setValue('#runTabView select[class^="contractNames"]', contractName).perform(() => {
+      callback()
+    })
 }
 
 function createContract (browser, inputParams, callback) {
   browser.click('.runView')
-  .setValue('div[class^="contractActionsContainerSingle"] input', inputParams, function () {
-    browser.click('#runTabView button[class^="instanceButton"]').pause(500).perform(function () { callback() })
-  })
+    .setValue('div[class^="contractActionsContainerSingle"] input', inputParams, function () {
+      browser.click('#runTabView button[class^="instanceButton"]').pause(500).perform(function () { callback() })
+    })
 }
 
 function verifyContract (browser, compiledContractNames, callback) {
@@ -144,12 +144,12 @@ function testConstantFunction (browser, address, fnFullName, expectedInput, expe
       done()
     })
   })
-  .click('.instance button[title="' + fnFullName + '"]')
-  .pause(1000)
-  .waitForElementPresent('#instance' + address + ' div[class^="contractActionsContainer"] div[class^="value"]')
-  .assert.containsText('#instance' + address + ' div[class^="contractActionsContainer"] div[class^="value"]', expectedOutput).perform(() => {
-    cb()
-  })
+    .click('.instance button[title="' + fnFullName + '"]')
+    .pause(1000)
+    .waitForElementPresent('#instance' + address + ' div[class^="contractActionsContainer"] div[class^="value"]')
+    .assert.containsText('#instance' + address + ' div[class^="contractActionsContainer"] div[class^="value"]', expectedOutput).perform(() => {
+      cb()
+    })
 }
 
 function testFunction (fnFullName, txHash, log, expectedInput, expectedReturn, expectedEvent, callback) {
@@ -284,8 +284,8 @@ function renameFile (browser, path, newFileName, renamedPath, done) {
       var evt = element.ownerDocument.createEvent('MouseEvents')
       var RIGHT_CLICK_BUTTON_CODE = 2 // the same for FF and IE
       evt.initMouseEvent('contextmenu', true, true,
-          element.ownerDocument.defaultView, 1, 0, 0, 0, 0, false,
-          false, false, false, RIGHT_CLICK_BUTTON_CODE, null)
+        element.ownerDocument.defaultView, 1, 0, 0, 0, 0, false,
+        false, false, false, RIGHT_CLICK_BUTTON_CODE, null)
       if (document.createEventObject) {
         // dispatch for IE
         return element.fireEvent('onclick', evt)
@@ -297,22 +297,22 @@ function renameFile (browser, path, newFileName, renamedPath, done) {
     contextMenuClick(document.querySelector('[data-path="' + path + '"]'))
   }, [path], function (result) {
     browser
-    .click('#menuitemrename')
-    .perform((client, doneSetValue) => {
-      browser.execute(function (path, addvalue) {
-        document.querySelector('[data-path="' + path + '"]').innerHTML = addvalue
-      }, [path, newFileName], () => {
-        doneSetValue()
+      .click('#menuitemrename')
+      .perform((client, doneSetValue) => {
+        browser.execute(function (path, addvalue) {
+          document.querySelector('[data-path="' + path + '"]').innerHTML = addvalue
+        }, [path, newFileName], () => {
+          doneSetValue()
+        })
       })
-    })
-    .click('body') // blur
-    .pause(500)
-    .click('#modal-footer-ok')
-    .waitForElementNotPresent('[data-path="' + path + '"]')
-    .waitForElementPresent('[data-path="' + renamedPath + '"]')
-    .perform(() => {
-      done()
-    })
+      .click('body') // blur
+      .pause(500)
+      .click('#modal-footer-ok')
+      .waitForElementNotPresent('[data-path="' + path + '"]')
+      .waitForElementPresent('[data-path="' + renamedPath + '"]')
+      .perform(() => {
+        done()
+      })
   })
 }
 
@@ -322,8 +322,8 @@ function removeFile (browser, path, done) {
       var evt = element.ownerDocument.createEvent('MouseEvents')
       var RIGHT_CLICK_BUTTON_CODE = 2 // the same for FF and IE
       evt.initMouseEvent('contextmenu', true, true,
-          element.ownerDocument.defaultView, 1, 0, 0, 0, 0, false,
-          false, false, false, RIGHT_CLICK_BUTTON_CODE, null)
+        element.ownerDocument.defaultView, 1, 0, 0, 0, 0, false,
+        false, false, false, RIGHT_CLICK_BUTTON_CODE, null)
       if (document.createEventObject) {
         // dispatch for IE
         return element.fireEvent('onclick', evt)
@@ -335,13 +335,13 @@ function removeFile (browser, path, done) {
     contextMenuClick(document.querySelector('[data-path="' + path + '"]'))
   }, [path], function (result) {
     browser
-    .click('#menuitemdelete')
-    .pause(500)
-    .click('#modal-footer-ok')
-    .waitForElementNotPresent('[data-path="' + path + '"]')
-    .perform(() => {
-      done()
-    })
+      .click('#menuitemdelete')
+      .pause(500)
+      .click('#modal-footer-ok')
+      .waitForElementNotPresent('[data-path="' + path + '"]')
+      .perform(() => {
+        done()
+      })
   })
 }
 

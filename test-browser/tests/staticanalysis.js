@@ -6,7 +6,7 @@ var dom = require('../helpers/dom')
 
 var sources = [
   {
-    'browser/Untitled.sol': {content: `
+    'browser/Untitled.sol': { content: `
 contract test1 { address test = tx.origin; }
 contract test2 {}
 contract TooMuchGas {
@@ -16,7 +16,7 @@ contract TooMuchGas {
     uint test;
     uint test1;
   }
-}`}}
+}` } }
 ]
 
 module.exports = {
@@ -45,10 +45,10 @@ function runTests (browser) {
         dom.listSelectorContains(['browser/Untitled.sol:2:33:Use of tx.origin',
           'Fallback function of contract TooMuchGas requires too much gas',
           'TooMuchGas.() : Variables have very similar names test and test1.'],
-          '#staticanalysisresult .staticAnalysisWarning',
-          browser, function () {
-            browser.end()
-          }
+        '#staticanalysisresult .staticAnalysisWarning',
+        browser, function () {
+          browser.end()
+        }
         )
       })
   })

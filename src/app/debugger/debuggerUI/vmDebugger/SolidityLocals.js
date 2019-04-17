@@ -5,7 +5,6 @@ var solidityTypeFormatter = require('./utils/SolidityTypeFormatter')
 var yo = require('yo-yo')
 
 class SolidityLocals {
-
   constructor (_parent, _traceManager, _internalTreeCall) {
     this.event = new EventManager()
     this.basicPanel = new DropdownPanel('Solidity Locals', {

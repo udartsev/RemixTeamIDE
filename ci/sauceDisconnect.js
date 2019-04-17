@@ -35,7 +35,7 @@ function retrieveTunnel (tunnelid, callback) {
     if (error) {
       callback(error)
     } else {
-      callback(null, {'identtifier': JSON.parse(result).tunnel_identifier, 'id': tunnelid})
+      callback(null, { 'identtifier': JSON.parse(result).tunnel_identifier, 'id': tunnelid })
     }
   })
 }

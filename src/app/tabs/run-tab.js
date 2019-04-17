@@ -13,7 +13,6 @@ var Recorder = require('./runTab/model/recorder.js')
 var RecorderUI = require('./runTab/recorder.js')
 
 class RunTab {
-
   constructor (udapp, udappUI, config, fileManager, editor, logCallback, filePanel, pluginManager, compilersArtefacts) {
     this.event = new EventManager()
 

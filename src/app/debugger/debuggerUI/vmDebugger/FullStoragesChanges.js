@@ -3,7 +3,7 @@ var yo = require('yo-yo')
 
 function FullStoragesChanges () {
   this.view
-  this.basicPanel = new DropdownPanel('Full Storages Changes', {json: true})
+  this.basicPanel = new DropdownPanel('Full Storages Changes', { json: true })
 }
 
 FullStoragesChanges.prototype.update = function (storageData) {

@@ -233,13 +233,13 @@ function log (self, tx, receipt) {
 function renderKnownTransaction (self, data) {
   var from = data.tx.from
   var to = data.resolvedData.contractName + '.' + data.resolvedData.fn
-  var obj = {from, to}
+  var obj = { from, to }
   var txType = 'knownTx'
   var tx = yo`
     <span id="tx${data.tx.hash}">
       <div class="${css.log}" onclick=${e => txDetails(e, tx, data, obj)}>
         ${checkTxStatus(data.receipt, txType)}
-        ${context(self, {from, to, data})}
+        ${context(self, { from, to, data })}
         <div class=${css.buttons}>
           <div class=${css.debug} onclick=${(e) => debug(e, data, self)}>Debug</div>
         </div>
@@ -254,7 +254,7 @@ function renderCall (self, data) {
   var to = data.resolvedData.contractName + '.' + data.resolvedData.fn
   var from = data.tx.from ? data.tx.from : ' - '
   var input = data.tx.input ? helper.shortenHexData(data.tx.input) : ''
-  var obj = {from, to}
+  var obj = { from, to }
   var txType = 'call'
   var tx = yo`
     <span id="tx${data.tx.hash}">
@@ -279,13 +279,13 @@ function renderCall (self, data) {
 function renderUnknownTransaction (self, data) {
   var from = data.tx.from
   var to = data.tx.to
-  var obj = {from, to}
+  var obj = { from, to }
   var txType = 'unknown' + (data.tx.isCall ? 'Call' : 'Tx')
   var tx = yo`
     <span id="tx${data.tx.hash}">
       <div class="${css.log}" onclick=${e => txDetails(e, tx, data, obj)}>
         ${checkTxStatus(data.receipt || data.tx, txType)}
-        ${context(self, {from, to, data})}
+        ${context(self, { from, to, data })}
         <div class=${css.buttons}>
           <div class=${css.debug} onclick=${(e) => debug(e, data, self)}>Debug</div>
         </div>
@@ -460,7 +460,7 @@ function createTable (opts) {
   if (opts.from) table.appendChild(from)
 
   var toHash
-  var data = opts.data  // opts.data = data.tx
+  var data = opts.data // opts.data = data.tx
   if (data.to) {
     toHash = opts.to + ' ' + data.to
   } else {

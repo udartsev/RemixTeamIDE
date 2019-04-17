@@ -51,7 +51,6 @@ class Slider {
     }
     return view
   }
-
 }
 
 module.exports = Slider

@@ -3,7 +3,7 @@ var DropdownPanel = require('./DropdownPanel')
 var yo = require('yo-yo')
 
 function CallstackPanel () {
-  this.basicPanel = new DropdownPanel('Call Stack', {json: true})
+  this.basicPanel = new DropdownPanel('Call Stack', { json: true })
 }
 
 CallstackPanel.prototype.update = function (calldata) {
@@ -15,4 +15,3 @@ CallstackPanel.prototype.render = function () {
 }
 
 module.exports = CallstackPanel
-

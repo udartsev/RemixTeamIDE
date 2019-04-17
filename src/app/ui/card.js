@@ -52,7 +52,6 @@ module.exports = class Card {
 
     return self._view.el
   }
-
 }
 
 const css = csjs`

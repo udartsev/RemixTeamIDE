@@ -35,13 +35,13 @@ class RemixExtension {
     } catch (e) {
       return console.log('unable to parse data')
     }
-    const {action, key, type, value} = msg
+    const { action, key, type, value } = msg
     if (action === 'notification') {
       if (this._notifications[key] && this._notifications[key][type]) {
         this._notifications[key][type](value)
       }
     } else if (action === 'response') {
-      const {id, error} = msg
+      const { id, error } = msg
       if (this._pendingRequests[id]) {
         this._pendingRequests[id](error, value)
         delete this._pendingRequests[id]
@@ -52,4 +52,3 @@ class RemixExtension {
 
 if (window) window.RemixExtension = RemixExtension
 if (module && module.exports) module.exports = RemixExtension
-

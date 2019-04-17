@@ -37,7 +37,7 @@ function gatherCompilationResults (dir, compilationResult, solcSnapshot) {
 function compile (solcSnapshot, source, optimization, addCompilationResult) {
   var missingInputs = []
   try {
-    var input = compilerInput(source, {optimize: optimization})
+    var input = compilerInput(source, { optimize: optimization })
     var result = solcSnapshot.compileStandardWrapper(input, function (path) {
       missingInputs.push(path)
     })
@@ -60,7 +60,6 @@ function replaceSolCompiler (results, solcSnapshot) {
     if (error) {
       console.log(error)
       process.exit(1)
-      return
     }
     console.log(solcSnapshot.version())
     data = data + '\n\nvar mockCompilerVersion = \'' + solcSnapshot.version() + '\''
@@ -69,7 +68,6 @@ function replaceSolCompiler (results, solcSnapshot) {
       if (error) {
         console.log(error)
         process.exit(1)
-        return
       }
     })
   })

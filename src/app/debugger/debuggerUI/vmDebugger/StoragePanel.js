@@ -3,7 +3,7 @@ var DropdownPanel = require('./DropdownPanel')
 var yo = require('yo-yo')
 
 function StoragePanel (_parent, _traceManager) {
-  this.basicPanel = new DropdownPanel('Storage', {json: true})
+  this.basicPanel = new DropdownPanel('Storage', { json: true })
 }
 
 StoragePanel.prototype.update = function (storage, header) {

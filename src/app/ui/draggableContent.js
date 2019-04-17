@@ -93,7 +93,7 @@ module.exports =
         this.el.parentElement.removeChild(this.el)
       }
     }
-}
+  }
 
 function dragElement (elmnt) {
   var pos1 = 0

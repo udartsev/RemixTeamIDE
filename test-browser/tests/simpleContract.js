@@ -64,9 +64,9 @@ function testFailedImport (browser, callback) {
   console.log('testFailedImport')
   contractHelper.addFile(browser, 'Untitled3.sol', sources[2]['browser/Untitled3.sol'], () => {
     browser.assert.containsText('#compileTabView .error pre', 'Unable to import "browser/Untitled11.sol": File not found')
-    .perform(function () {
-      callback(null, browser)
-    })
+      .perform(function () {
+        callback(null, browser)
+      })
   })
 }
 
@@ -144,9 +144,9 @@ function checkDeployShouldSucceed (browser, address, callback) {
             contractHelper.createContract(browser, '', () => {
               contractHelper.getAddressAtPosition(browser, 1, (address) => {
                 browser.waitForElementPresent('.instance:nth-of-type(3)')
-                .click('.instance:nth-of-type(3)').perform(() => {
-                  contractHelper.testConstantFunction(browser, address, 'get - call', '', '0: uint256: 45', () => { callback(null, browser) })
-                })
+                  .click('.instance:nth-of-type(3)').perform(() => {
+                    contractHelper.testConstantFunction(browser, address, 'get - call', '', '0: uint256: 45', () => { callback(null, browser) })
+                  })
               })
             })
           })
@@ -289,26 +289,26 @@ contract ENS is AbstractENS {
 
 var sources = [
   {
-    'browser/Untitled.sol': {content: 'contract test1 {} contract test2 {}'}
+    'browser/Untitled.sol': { content: 'contract test1 {} contract test2 {}' }
   },
   {
-    'browser/Untitled1.sol': {content: 'import "./Untitled2.sol"; contract test6 {}'},
-    'browser/Untitled2.sol': {content: 'contract test4 {} contract test5 {}'}
+    'browser/Untitled1.sol': { content: 'import "./Untitled2.sol"; contract test6 {}' },
+    'browser/Untitled2.sol': { content: 'contract test4 {} contract test5 {}' }
   },
   {
-    'browser/Untitled3.sol': {content: 'import "./Untitled11.sol"; contract test6 {}'}
+    'browser/Untitled3.sol': { content: 'import "./Untitled11.sol"; contract test6 {}' }
   },
   {
-    'browser/Untitled4.sol': {content: 'import "github.com/ethereum/ens/contracts/ENS.sol"; contract test7 {}'},
-    'github.com/ethereum/ens/contracts/ENS.sol': {content: ENS}
+    'browser/Untitled4.sol': { content: 'import "github.com/ethereum/ens/contracts/ENS.sol"; contract test7 {}' },
+    'github.com/ethereum/ens/contracts/ENS.sol': { content: ENS }
   },
   {
-    'browser/Untitled4.sol': {content: 'import "github.com/ethereum/ens/contracts/ENS.sol"; contract test7 {}'},
-    'github.com/ethereum/ens/contracts/ENS.sol': {content: ENS},
-    'github.com/ethereum/ens/contracts/AbstractENS.sol': {content: abstractENS}
+    'browser/Untitled4.sol': { content: 'import "github.com/ethereum/ens/contracts/ENS.sol"; contract test7 {}' },
+    'github.com/ethereum/ens/contracts/ENS.sol': { content: ENS },
+    'github.com/ethereum/ens/contracts/AbstractENS.sol': { content: abstractENS }
   },
   {
-    'browser/Untitled5.sol': {content: `library lib {
+    'browser/Untitled5.sol': { content: `library lib {
       function getInt () public view returns (uint) {
           return 45;
       }    
@@ -318,6 +318,6 @@ var sources = [
       function get () public view returns (uint) {
           return lib.getInt();
       }    
-}`}
+}` }
   }
 ]

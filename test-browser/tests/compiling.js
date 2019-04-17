@@ -107,13 +107,13 @@ function testReturnValues (browser, callback) {
 function testInputValues (browser, callback) {
   contractHelper.testContracts(browser, 'inputValues.sol', sources[2]['browser/inputValues.sol'], ['test'], function () {
     browser.click('.runView')
-        .click('#runTabView button[class^="instanceButton"]')
-        .waitForElementPresent('.instance:nth-of-type(2)')
-        .click('.instance:nth-of-type(2)')
-     .testFunction('inputValue1 - transact (not payable)',
+      .click('#runTabView button[class^="instanceButton"]')
+      .waitForElementPresent('.instance:nth-of-type(2)')
+      .click('.instance:nth-of-type(2)')
+      .testFunction('inputValue1 - transact (not payable)',
         '0xf3265e3d9cd9299958bf81bed3cdfdd537942f85b9e0b95c5468c691d9396505',
         `[vm]\nfrom:0xca3...a733c\nto:test.inputValue1(uint256,int256,string) 0x8c1...401f5\nvalue:0 wei\ndata:0xd69...00000\nlogs:0\nhash:0xf32...96505`,
-        {types: 'uint256 _u, int256 _i, string _str', values: '"2343242", "-4324324", "string _ string _  string _  string _  string _  string _  string _  string _  string _  string _"'},
+        { types: 'uint256 _u, int256 _i, string _str', values: '"2343242", "-4324324", "string _ string _  string _  string _  string _  string _  string _  string _  string _  string _"' },
         `{
  "0": "uint256: _uret 2343242",
  "1": "int256: _iret -4324324",
@@ -121,7 +121,7 @@ function testInputValues (browser, callback) {
 }`).pause(500).testFunction('inputValue2 - transact (not payable)',
         '0xd9ec6d8aa73d81755447190f52939ee3084e105b988d445a11e7ac718392ff5a',
         `[vm]\nfrom:0xca3...a733c\nto:test.inputValue2(uint256[3],bytes8[4]) 0x8c1...401f5\nvalue:0 wei\ndata:0x1b7...00000\nlogs:1\nhash:0xd9e...2ff5a`,
-        {types: 'uint256[3] _n, bytes8[4] _b8', values: '[1,2,3], ["0x1234", "0x1234","0x1234","0x1234"]'},
+        { types: 'uint256[3] _n, bytes8[4] _b8', values: '[1,2,3], ["0x1234", "0x1234","0x1234","0x1234"]' },
         `{
  "0": "uint256[3]: _nret 1,2,3",
  "1": "bytes8[4]: _b8ret 0x1234000000000000,0x1234000000000000,0x1234000000000000,0x1234000000000000"
@@ -158,15 +158,15 @@ function testInputValues (browser, callback) {
 // @TODO test: bytes8[3][] type as input
 
 var sources = [
-  {'browser/Untitled.sol': {content: `
+  { 'browser/Untitled.sol': { content: `
       contract TestContract { function f() public returns (uint) { return 8; } 
       function g() public returns (uint, string memory, bool, uint) {  
         uint payment = 345;
         bool payed = true;
         string memory comment = "comment_comment_";
         uint month = 4;
-        return (payment, comment, payed, month); } }`}},
-  {'browser/returnValues.sol': {content: `
+        return (payment, comment, payed, month); } }` } },
+  { 'browser/returnValues.sol': { content: `
   contract testReturnValues {
     enum ActionChoices { GoLeft, GoRight, GoStraight, SitStill }
     function retunValues1 () public returns (bool _b, uint _u, int _i, address _a)  {
@@ -196,8 +196,8 @@ var sources = [
        a[2] = [int(1),10,-5435,45,-7];
       _a1 = a;
     }
-  }`}},
-  {'browser/inputValues.sol': {content: `
+  }` } },
+  { 'browser/inputValues.sol': { content: `
   contract test {
     event event1(int _i, uint indexed _u, string indexed _str, bytes4 _b, string _notIndexed);
     function inputValue1 (uint _u, int _i, string memory _str) public returns (uint _uret, int _iret, string memory _strret) {
@@ -210,5 +210,5 @@ var sources = [
         _b8ret = _b8;
         emit event1(-123, 123, "test", hex"1234", "test _ test _ test _ test test _ test test _ test test _ test test _ test test _ test test _ test ");
     }
-}`}}
+}` } }
 ]

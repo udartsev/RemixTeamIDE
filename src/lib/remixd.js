@@ -1,4 +1,4 @@
-import {SERVER_IP} from '../../SETTINGS.js'
+import { SERVER_IP } from '../../SETTINGS.js'
 
 var EventManager = require('../lib/events')
 var modalDialog = require('../app/ui/modaldialog')
@@ -80,7 +80,7 @@ class Remixd {
       return yo`<div>Connection to Remixd closed. Localhost connection not available anymore.</div>`
     }
     if (this.connected) {
-      modalDialog('Lost connection to Remixd!', remixdDialog(), {}, {label: ''})
+      modalDialog('Lost connection to Remixd!', remixdDialog(), {}, { label: '' })
     }
     this.connected = false
     this.socket = null

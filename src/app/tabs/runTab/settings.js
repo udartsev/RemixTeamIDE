@@ -1,4 +1,4 @@
-import {TESTNET_IP, TESTNET_PORT} from '../../../../SETTINGS.js'
+import { TESTNET_IP, TESTNET_PORT } from '../../../../SETTINGS.js'
 
 var $ = require('jquery')
 var yo = require('yo-yo')
@@ -11,7 +11,6 @@ var addTooltip = require('../../ui/tooltip')
 var helper = require('../../../lib/helper.js')
 
 class SettingsUI {
-
   constructor (settings) {
     this.settings = settings
     this.event = new EventManager()
@@ -224,7 +223,7 @@ class SettingsUI {
   }
 
   updateNetwork () {
-    this.settings.updateNetwork((err, {id, name} = {}) => {
+    this.settings.updateNetwork((err, { id, name } = {}) => {
       if (err) {
         this.netUI.innerHTML = 'can\'t detect network '
         return
@@ -258,7 +257,6 @@ class SettingsUI {
       txOrigin.setAttribute('value', accounts[0])
     })
   }
-
 }
 
 module.exports = SettingsUI

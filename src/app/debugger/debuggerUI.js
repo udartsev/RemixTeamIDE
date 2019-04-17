@@ -77,11 +77,9 @@ class ContextManager {
       }
     })
   }
-
 }
 
 class DebuggerUI {
-
   constructor (container) {
     this.registry = globalRegistry
     this.event = new EventManager()
@@ -117,11 +115,11 @@ class DebuggerUI {
     this.editor = this.registry.get('editor').api
 
     self.editor.event.register('breakpointCleared', (fileName, row) => {
-      if (self.debugger) self.debugger.breakPointManager.remove({fileName: fileName, row: row})
+      if (self.debugger) self.debugger.breakPointManager.remove({ fileName: fileName, row: row })
     })
 
     self.editor.event.register('breakpointAdded', (fileName, row) => {
-      if (self.debugger) self.debugger.breakPointManager.add({fileName: fileName, row: row})
+      if (self.debugger) self.debugger.breakPointManager.add({ fileName: fileName, row: row })
     })
 
     self.editor.event.register('contentChanged', function () {
@@ -229,7 +227,6 @@ class DebuggerUI {
     yo.update(this.debuggerPanelsView, this.vmDebugger.render())
     yo.update(this.stepManagerView, this.stepManager.render())
   }
-
 }
 
 module.exports = DebuggerUI

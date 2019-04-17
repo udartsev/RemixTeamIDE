@@ -39,10 +39,10 @@ class EditorPanel {
     }
     self._view = {}
     var editor = new Editor({})
-    self._components.registry.put({api: editor, name: 'editor'})
+    self._components.registry.put({ api: editor, name: 'editor' })
 
-    var contextualListener = new ContextualListener({editor, pluginManager: self._deps.pluginManager})
-    var contextView = new ContextView({contextualListener, editor})
+    var contextualListener = new ContextualListener({ editor, pluginManager: self._deps.pluginManager })
+    var contextView = new ContextView({ contextualListener, editor })
 
     self._components = {
       editor: editor,
@@ -53,16 +53,16 @@ class EditorPanel {
         udapp: self._deps.udapp,
         compilers: {}
       },
-        {
-          getPosition: (event) => {
-            var limitUp = 36
-            var limitDown = 20
-            var height = window.innerHeight
-            var newpos = (event.pageY < limitUp) ? limitUp : event.pageY
-            newpos = (newpos < height - limitDown) ? newpos : height - limitDown
-            return newpos
-          }
-        })
+      {
+        getPosition: (event) => {
+          var limitUp = 36
+          var limitDown = 20
+          var height = window.innerHeight
+          var newpos = (event.pageY < limitUp) ? limitUp : event.pageY
+          newpos = (newpos < height - limitDown) ? newpos : height - limitDown
+          return newpos
+        }
+      })
     }
 
     self._components.terminal.event.register('filterChanged', (type, value) => {
@@ -121,11 +121,11 @@ class EditorPanel {
   }
   logMessage (msg) {
     var self = this
-    self.log({type: 'log', value: msg})
+    self.log({ type: 'log', value: msg })
   }
   logHtmlMessage (msg) {
     var self = this
-    self.log({type: 'html', value: msg})
+    self.log({ type: 'html', value: msg })
   }
   render () {
     var self = this

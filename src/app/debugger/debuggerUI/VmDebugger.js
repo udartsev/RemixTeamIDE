@@ -89,7 +89,7 @@ function VmDebugger (vmDebuggerLogic) {
   this.vmDebuggerLogic.event.register('solidityLocalsMessage', this.solidityLocals.setMessage.bind(this.solidityLocals))
   this.vmDebuggerLogic.event.register('solidityLocalsUpdating', this.solidityLocals.setUpdating.bind(this.solidityLocals))
 
-  this.returnValuesPanel = new DropdownPanel('Return Value', {json: true})
+  this.returnValuesPanel = new DropdownPanel('Return Value', { json: true })
   this.returnValuesPanel.data = {}
   this.vmDebuggerLogic.event.register('traceReturnValueUpdate', this.returnValuesPanel.update.bind(this.returnValuesPanel))
 

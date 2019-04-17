@@ -46,7 +46,7 @@ class AutoCompletePopup {
       <div class="${css.popup}">
         <div>
           ${self.data._options.map((item, index) => {
-            return yo`
+    return yo`
               <div class="${css.listHandlerHide}">
                   <a value=${index}>
                     <div onclick=${handleSelect}>
@@ -59,7 +59,7 @@ class AutoCompletePopup {
                 <hr/>
               </div>
             `
-          })}
+  })}
         </div>
         <div class="${css.listHandlerHide}">
           <button value=false onclick=${handleListIteration}>▲</button>
@@ -77,7 +77,7 @@ class AutoCompletePopup {
     function handleOpenPopup () {
       if (self.data._options.length > 1) {
         self._view.autoComplete.style.display = 'block'
-        modal(header.innerText, self._view.autoComplete, {label: null},
+        modal(header.innerText, self._view.autoComplete, { label: null },
           {
             fn: () => { self._removePopUp() }
           })
@@ -129,7 +129,6 @@ class AutoCompletePopup {
     setUpPopUp()
     return self._view
   }
-
 }
 
 module.exports = AutoCompletePopup

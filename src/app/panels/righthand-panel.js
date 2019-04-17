@@ -48,11 +48,11 @@ const css = csjs`
 `
 
 class RighthandPanel {
-  constructor ({pluginManager, tabs}, localRegistry) {
+  constructor ({ pluginManager, tabs }, localRegistry) {
     const self = this
     self._components = {}
     self._components.registry = localRegistry || globalRegistry
-    self._components.registry.put({api: this, name: 'righthandpanel'})
+    self._components.registry.put({ api: this, name: 'righthandpanel' })
     self.event = new EventManager()
     self._view = {
       element: null,

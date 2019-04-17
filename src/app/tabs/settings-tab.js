@@ -158,8 +158,8 @@ module.exports = class SettingsTab {
     function setSavedPlugin (savedPlugins) {
       self._deps.config.set('settings/plugins-list', JSON.stringify(savedPlugins))
     }
-    loadPlugins(defaultPlugins, {removable: false})
-    loadPlugins(getSavedPlugin(), {removable: true})
+    loadPlugins(defaultPlugins, { removable: false })
+    loadPlugins(getSavedPlugin(), { removable: true })
 
     function onLoadPlugin (name) {
       self.event.trigger('plugin-loadRequest', [self._view.plugins[name].json])
@@ -183,7 +183,7 @@ module.exports = class SettingsTab {
       if (self._view.plugins[json.title]) return tooltip('Plugin already loaded')
       savedPlugin[json.title] = json
       setSavedPlugin(savedPlugin)
-      loadPlugins([json], {removable: true})
+      loadPlugins([json], { removable: true })
     }
 
     function onchangeGenerateContractMetadata (event) {

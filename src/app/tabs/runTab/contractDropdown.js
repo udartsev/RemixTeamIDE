@@ -123,16 +123,16 @@ class ContractDropdownUI {
         The transaction execution will likely fail. Do you want to force sending? <br>
         ${msg}
         </div>`,
-          {
-            label: 'Send Transaction',
-            fn: () => {
-              continueTxExecution()
-            }}, {
-              label: 'Cancel Transaction',
-              fn: () => {
-                cancelCb()
-              }
-            })
+        {
+          label: 'Send Transaction',
+          fn: () => {
+            continueTxExecution()
+          } }, {
+          label: 'Cancel Transaction',
+          fn: () => {
+            cancelCb()
+          }
+        })
       } else {
         continueTxExecution()
       }
@@ -160,16 +160,16 @@ class ContractDropdownUI {
       return modalDialog('Contract code size over limit', yo`<div>Contract creation initialization returns data with length of more than 24576 bytes. The deployment will likely fails. <br>
       More info: <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-170.md" target="_blank">eip-170</a>
       </div>`,
-        {
-          label: 'Force Send',
-          fn: () => {
-            this.dropdownLogic.forceSend(selectedContract, args, continueCb, promptCb, modalDialogCustom, confirmDialog, statusCb, finalCb)
-          }}, {
-            label: 'Cancel',
-            fn: () => {
-              this.logCallback(`creation of ${selectedContract.name} canceled by user.`)
-            }
-          })
+      {
+        label: 'Force Send',
+        fn: () => {
+          this.dropdownLogic.forceSend(selectedContract, args, continueCb, promptCb, modalDialogCustom, confirmDialog, statusCb, finalCb)
+        } }, {
+        label: 'Cancel',
+        fn: () => {
+          this.logCallback(`creation of ${selectedContract.name} canceled by user.`)
+        }
+      })
     }
     this.dropdownLogic.forceSend(selectedContract, args, continueCb, promptCb, modalDialogCustom, confirmDialog, statusCb, finalCb)
   }
@@ -194,7 +194,6 @@ class ContractDropdownUI {
       }
     )
   }
-
 }
 
 module.exports = ContractDropdownUI

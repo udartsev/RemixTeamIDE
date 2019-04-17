@@ -19,7 +19,7 @@ module.exports = function sauce (callback) {
 
   const passed = currentTest.results.passed === currentTest.results.tests
 
-  const data = JSON.stringify({passed})
+  const data = JSON.stringify({ passed })
 
   const requestPath = `/rest/v1/${username}/jobs/${sessionId}`
 
