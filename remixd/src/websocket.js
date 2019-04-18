@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { SERVER_IP } from '../../SETTINGS.js'
+//import { SERVER_IP } from '../SETTINGS.js'
+//const loopback = require('../../SETTINGS.js').loopback;
 
 var WebSocketServer = require('websocket').server
 var http = require('http')
@@ -17,8 +18,11 @@ class WebSocket {
       response.writeHead(404)
       response.end()
     })
+    
     //var loopback = '127.0.0.1'
-    var loopback = SERVER_IP
+    //var loopback = SERVER_IP
+    var loopback = '0.0.0.0'
+    
     this.server.listen(this.port, loopback, function () {
       console.log((new Date()) + ' Remixd is listening on ' + loopback + ':65520')
     })
